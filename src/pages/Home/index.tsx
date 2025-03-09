@@ -1,36 +1,37 @@
-import { useEffect, useState } from "react";
-import { appDataDir } from "@tauri-apps/api/path";
-import { TunnelListing } from "../../components/TunnelListing";
-import { Header } from "../../components/Header";
+import { Fragment, useRef, useState } from "react";
+import { TunnelListing } from "./components/TunnelListing";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
+import { TunnelCreateModal } from "./components/TunnelCreateModal";
 
 function Home(): JSX.Element {
-    const [dataDir, setDataDir] = useState<string>("");
-    const [configDir, setConfigDir] = useState<string>("");
-
-    useEffect(() => {
-        async function run() {
-            const baseDir = await appDataDir();
-
-            setConfigDir(`${baseDir}/config`);
-            setDataDir(`${baseDir}/data`);
-        }
-
-        run();
-    }, []);
+    const [open, setOpen] = useState(false);
 
     return (
         <>
-            <Header />
+            <div className="mt-4 flex justify-center">
+                <Button
+                    variant="outline"
+                    onClick={() => {
+                        setOpen(true);
+                    }}
+                >
+                    <Plus className="mr-2" /> New Tunnel
+                </Button>
+            </div>
+
+            <hr className="mt-4" />
+
             <TunnelListing />
 
             <hr />
             <div className="p-2">
                 <div className="text-sm text-gray-500">
-                    <p>
-                        <strong>Data directory:</strong>
-                    </p>
+                    <strong>Data directory:</strong>
                 </div>
             </div>
+
+            <TunnelCreateModal isOpen={open} setOpen={setOpen} />
         </>
     );
 }

@@ -6,7 +6,7 @@
         "distDir": "../dist"
     },
     "package": {
-        "productName": "cloudflared-ui",
+        "productName": "FlaredPannel",
         "version": "0.0.0"
     },
     "tauri": {
@@ -22,13 +22,31 @@
             },
             "os": {
                 "all": true
+            },
+            "dialog": {
+                "all": true,
+                "ask": true,
+                "confirm": true,
+                "message": true,
+                "open": true,
+                "save": true
+            },
+            "fs": {
+                "all": true,
+                "scope": [
+                    "$APPLOCALDATA",
+                    "$APPLOCALDATA/data/",
+                    "$APPLOCALDATA/config/",
+                    "$APPLOCALDATA/config/settings.json",
+                    "$APPLOCALDATA/logs/"
+                ]
             }
         },
         "windows": [
             {
                 "fullscreen": false,
                 "resizable": false,
-                "title": "cloudflared-ui",
+                "title": "FlaredPannel",
                 "width": 500,
                 "height": 600,
                 "minWidth": 500,
@@ -41,7 +59,7 @@
         "bundle": {
             "active": true,
             "targets": "all",
-            "identifier": "com.tauri.dev",
+            "identifier": "com.eduaard.flaredpannel",
             "icon": [
                 "icons/32x32.png",
                 "icons/128x128.png",

@@ -1,5 +1,6 @@
 import { CardContent, CardFooter, Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { TrashIcon } from "lucide-react";
 
 export function TunnelItem(tunnelData: Tunnel): JSX.Element {
     const { name, description, online, publicHost, localHost, createdAt } =
@@ -40,7 +41,14 @@ export function TunnelItem(tunnelData: Tunnel): JSX.Element {
                     <Button size="sm" variant="outline">
                         {online ? "Turn Off" : "Turn On"}
                     </Button>
-                    <Button size="sm">Delete</Button>
+                    <Button
+                        className="text-red-500 hover:bg-red-500 hover:text-white"
+                        size="sm"
+                        variant="outline"
+                    >
+                        <TrashIcon className="mr-2 h-4 w-4" />
+                        Delete
+                    </Button>
                 </div>
             </CardFooter>
         </Card>

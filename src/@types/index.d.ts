@@ -6,4 +6,9 @@ type Tunnel = {
     publicHost: string;
     localHost: string;
     createdAt: string;
-}
+};
+
+type SettingsManagerSchema = {
+    theme: "dark" | "light";
+    tunnels: Tunnel[];
+};

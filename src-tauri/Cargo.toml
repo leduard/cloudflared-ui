@@ -1,5 +1,5 @@
 [package]
-name = "cloudflared-ui"
+name = "flaredpannel"
 version = "0.0.0"
 description = "A Tauri App"
 authors = ["you"]
@@ -11,9 +11,11 @@ edition = "2021"
 tauri-build = { version = "1", features = [] }
 
 [dependencies]
-tauri = { version = "1", features = [ "path-all", "shell-execute", "os-all", "shell-open"] }
+tauri = { version = "1", features = [ "fs-all", "dialog-all", "path-all", "shell-execute", "os-all", "shell-open"] }
+tauri-plugin-log = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
+reqwest = { version = "0.12.4", features = ["json", "blocking"] }
 
 [features]
 # This feature is used for production builds or when a dev server is not specified, DO NOT REMOVE!!
